@@ -57,7 +57,6 @@ def movie_view(request):
         return Response(status=status.HTTP_201_CREATED,
                         data={'message': 'Successfully created!'})
 
-'tee'
 @api_view(['GET', 'PUT', 'DELETE'])
 def movie_item_view(request, id):
     try:
