@@ -57,14 +57,14 @@ class ReviewCreateSerializer(serializers.Serializer):
     stars = serializers.IntegerField(min_value=1, max_value=5)
     movie = serializers.IntegerField(min_value=1)
 
-    def validate_director(self, director): # 10
+    def validate_director(self, director): # 9
         try:
             Director.objects.get(id=director)
         except Director.DoesNotExist:
             raise ValidationError('Director Not Found')
         return director
 
-    def validate_movie(self, movie): # 10
+    def validate_movie(self, movie): # 9
         try:
             Movie.objects.get(id=movie)
         except Movie.DoesNotExist:
