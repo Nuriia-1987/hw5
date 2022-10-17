@@ -17,14 +17,23 @@ from django.contrib import admin
 from django.urls import path, include
 from movie_app import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/directors/', views.director_view),
-    path('api/v1/directors/<int:id>/', views.director_item_view),
-    path('api/v1/movies/', views.movie_view),
-    path('api/v1/movies/<int:id>/', views.movie_item_view),
-    path('api/v1/movies/reviews/', views.movies_review_view),
-    path('api/v1/reviews/', views.review_view),
-    path('api/v1/reviews/<int:id>/', views.review_item_view),
-    path('api/v1/users/', include('users.urls'))
+    path('api/v1/directors/', views.DirectorListAPIView.as_view()),
+    path('api/v1/director/<int:id>/', views.MovieItemUpdateDeleteAPIView.as_view()),
+    path('api/v1/movies/', views.MovieListAPIView.as_view()),
+    path('api/v1/movies/<int:id>/', views.MovieItemUpdateDeleteAPIView.as_view()),
+    path('api/v1/movies/reviews/', views.MoviesReviewsListAPIView.as_view()),
+    path('api/v1/reviews/', views.ReviewListAPIVies.as_view()),
+    path('api/v1/reviews/<int:id>/', views.RetrieveUpdateDestroyAPIView.as_view()),
+    # path('api/v1/directors/', views.DirectorListSerializer),
+    # path('api/v1/directors/<int:id>/', views.director_item_view),
+    # path('api/v1/movies/', views.movie_view),
+    # path('api/v1/movies/<int:id>/', views.movie_item_view),
+    # path('api/v1/movies/reviews/', views.movies_review_view),
+    # path('api/v1/reviews/', views.review_view),
+    # path('api/v1/reviews/<int:id>/', views.review_item_view),
+    path('api/v1/users/', include('users.urls')
+    )
 ]
